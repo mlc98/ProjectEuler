@@ -67,7 +67,7 @@ int largestPrimeFactor (long long lim) {
     return max;
 }
 
-long naturalPower (int base, short exp) {
+long naturalPower (int base, short exp) { //Returns exponentiation of natural numbers recursively
     if (exp < 0) {
         cerr << "Function only works on natural numbers set" << endl;
         exit(0);
@@ -78,21 +78,25 @@ long naturalPower (int base, short exp) {
     return base * naturalPower(base, exp - 1);
 }
 
-short naturalNumberLenght (int a) {
-    if (a <= 0) {
+short naturalNumberLenght (int a) { //Recursive function to determine a given number's lenght
+    if (a == 0) { //Work for both positive and negative numbers
         return 0;
     }
     return 1 + naturalNumberLenght(a / 10);
 }
 
-int Reverse (int a) {
-    int mirrored, exponent;
+int Reverse (int a) { //Returns a number's digits flipped
+    int mirrored, exponent; //Variable to store our final result and an exponent to use naturalPower properly
     mirrored = 0;
-    exponent = naturalNumberLenght(a) - 1;
+    exponent = naturalNumberLenght(a) - 1; //To perform exponentiation in the next step, we reduce this value by 1
     while (a > 0) {
         mirrored += a % 10 * naturalPower(10, exponent);
         a = a / 10;
         exponent--;
+        /*
+         * Take number's last digit (with modulo) and multiplies it by 10 ^ exponent.
+         * That's why we reduced exponent variable value by 1
+         * */
     }
     return mirrored;
 }
@@ -102,9 +106,10 @@ bool isPalindrome (int a) {
         return true;
     }
     return false;
+    //It can get any simpler
 }
 
-int largestPalindromeProduct () {
+int largestPalindromeProduct () {//Actual exercise
     int max = 0;
     for (int i = 999; i > 500; i--) {
         for (int j = 999; j > 500; j--) {
