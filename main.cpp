@@ -1,6 +1,6 @@
 #include "Problems1-10.h"
 
 int main() {
-    cout << evenFib(100) << endl;
+    cout << largestPalindromeProduct() << endl;
     return 0;
 }

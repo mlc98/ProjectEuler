@@ -34,3 +34,86 @@ long evenFib (int lim) { //Returns the sum of all even Fibonacci numbers below g
     }
     return res;
 }
+
+
+int largestPrimeFactor (long long lim) {
+    int factor, max; // Variables to store the factor we're testing, and the maximum factor found
+    max = 1;
+    factor = 2;
+    while (factor == 2) { //We test out 2, to be able to increment by 2 (making odd numbers) in the next bucle
+        if (lim % factor == 0) {
+            lim = lim / factor;
+        }
+        factor++;
+    }
+    factor = 3;
+    while (factor <= lim) {
+        if (lim % factor == 0) {
+            lim = lim / factor; //we divide by the smallest prime factor
+        }
+        if (factor > max) {
+            max = factor; //is this factor greater than our current max value?
+        }
+        factor += 2; //test next prime factor
+    }
+
+    /*
+     * Since we test out small factors firsts, we are sure that our program will discard any multiple
+     * of these small prime factors. Thus, we can increment out test case by 2 each iteration, and we
+     * will be accepting prime numbers ONLY.
+     * We're capable of returning all prime factors by storing them in an array
+     * */
+
+    return max;
+}
+
+long naturalPower (int base, short exp) {
+    if (exp < 0) {
+        cerr << "Function only works on natural numbers set" << endl;
+        exit(0);
+    }
+    if (exp == 0) {
+        return 1;
+    }
+    return base * naturalPower(base, exp - 1);
+}
+
+short naturalNumberLenght (int a) {
+    if (a <= 0) {
+        return 0;
+    }
+    return 1 + naturalNumberLenght(a / 10);
+}
+
+int Reverse (int a) {
+    int mirrored, exponent;
+    mirrored = 0;
+    exponent = naturalNumberLenght(a) - 1;
+    while (a > 0) {
+        mirrored += a % 10 * naturalPower(10, exponent);
+        a = a / 10;
+        exponent--;
+    }
+    return mirrored;
+}
+
+bool isPalindrome (int a) {
+    if (a == Reverse(a)) {
+        return true;
+    }
+    return false;
+}
+
+int largestPalindromeProduct () {
+    int max = 0;
+    for (int i = 999; i > 500; i--) {
+        for (int j = 999; j > 500; j--) {
+            if (isPalindrome(i * j)) {
+                if (i * j > max) {
+                    max = i * j;
+                }
+            }
+        }
+    }
+    return max;
+}
