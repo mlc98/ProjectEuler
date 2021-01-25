@@ -86,7 +86,7 @@ short naturalNumberLenght (int a) { //Recursive function to determine a given nu
 }
 
 int Reverse (int a) { //Returns a number's digits flipped
-    int mirrored, exponent; //Variable to store our final result and an exponent to use naturalPower properly
+    int mirrored, exponent; //Variable to store our final result and one for an exponent (required for naturalPower())
     mirrored = 0;
     exponent = naturalNumberLenght(a) - 1; //To perform exponentiation in the next step, we reduce this value by 1
     while (a > 0) {
@@ -121,4 +121,71 @@ int largestPalindromeProduct () {//Actual exercise
         }
     }
     return max;
+}
+
+long lcm (int a , int b) {
+    int aux = a;
+    while (a % b != 0) {
+        a += aux;
+    }
+    return a;
+}
+
+long smallestMultiple (int a) { //Brute-forcing least common multiple
+    int res = 1;
+    for (int i = a / 2; i <= a; i++) {
+        //cout << "i: " << i << "\tres: " << res << endl;
+        res = lcm(i, res);
+    }
+    return res;
+}
+
+long sumSquareDifference (int lim) { //My first solution
+    long a, b;
+    a = 0;
+    b = 0;
+    for (int i = lim; i > 0; i--) {
+        a += naturalPower(i, 2);
+        b += i;
+    }
+    return b * b - a;
+}
+
+long sumSquareDifference_2 (int lim) { //Mathematical optimization explained in problem overview
+    long a, b;
+    a = lim * (lim + 1) / 2;
+    b = (2 * lim + 1) * (lim + 1) * lim / 6;
+    return naturalPower(a, 2) - b;
+}
+
+int squareRoot (int a) {
+    int res = 1;
+    while ((res + 1) * (res + 1) <= a) {
+        res++;
+    }
+    return res;
+}
+
+bool isPrime (long a) {
+    if (a % 2 == 0) {
+        return false;
+    }
+    for (int i = 3; i < squareRoot(a) + 1; i += 2) {
+        if (a % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+long prime10001 (int lim) {
+    int counter = 0;
+    int test = 3;
+    while (counter != lim) {
+        if(isPrime(test)) {
+            counter++;
+        }
+        test += 2;
+    }
+    return test;
 }

@@ -6,6 +6,7 @@
 #define PROJECTEULER_PROBLEMS1_10_H
 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -17,5 +18,12 @@ short naturalNumberLenght (int a);
 int Reverse (int a);
 bool isPalindrome (int a);
 int largestPalindromeProduct ();
+long lcm (int a , int b);
+long smallestMultiple (int a);
+long sumSquareDifference (int lim);
+long sumSquareDifference_2 (int lim);
+int squareRoot (int a);
+bool isPrime (long a);
+long prime10001 (int lim);
 
 #endif //PROJECTEULER_PROBLEMS1_10_H

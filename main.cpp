@@ -1,6 +1,6 @@
 #include "Problems1-10.h"
 
 int main() {
-    cout << largestPalindromeProduct() << endl;
+    cout << prime10001(10001) << endl;
     return 0;
 }
