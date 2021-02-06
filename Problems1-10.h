@@ -25,5 +25,8 @@ long sumSquareDifference_2 (int lim);
 int squareRoot (int a);
 bool isPrime (long a);
 long prime10001 (int lim);
+long long largestProductSerie ();
+long specialPythagoreanTriplet ();
+long long summationOfPrimes ();
 
 #endif //PROJECTEULER_PROBLEMS1_10_H

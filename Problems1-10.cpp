@@ -4,7 +4,7 @@
 
 #include "Problems1-10.h"
 
-int multiplesof3and5 (int lim) { //recursive function to determine if a given number is multiple of 3 or 5
+int multiplesof3and5 (int lim) { //Problem 1 Recursive function to determine if a given number is multiple of 3 or 5
     if (lim < 3) { //base case, no need to go below this point
         return 0;
     }
@@ -23,7 +23,7 @@ Even Fibonacci numbers follow the ecuation EvF(n) = 4 * EvF(n - 1) + EvF(n - 2).
 */
 
 
-long evenFib (int lim) { //Returns the sum of all even Fibonacci numbers below given limit
+long evenFib (int lim) { //Problem 2 Returns the sum of all even Fibonacci numbers below given limit
     long res, i1, i2;
     i1 = 0;
     i2 = 2;
@@ -36,7 +36,7 @@ long evenFib (int lim) { //Returns the sum of all even Fibonacci numbers below g
 }
 
 
-int largestPrimeFactor (long long lim) {
+int largestPrimeFactor (long long lim) { //Problem 3
     int factor, max; // Variables to store the factor we're testing, and the maximum factor found
     max = 1;
     factor = 2;
@@ -109,7 +109,7 @@ bool isPalindrome (int a) {
     //It can get any simpler
 }
 
-int largestPalindromeProduct () {//Actual exercise
+int largestPalindromeProduct () {// Problem 4
     int max = 0;
     for (int i = 999; i > 500; i--) {
         for (int j = 999; j > 500; j--) {
@@ -167,6 +167,9 @@ int squareRoot (int a) {
 }
 
 bool isPrime (long a) {
+    if (a == 2) {
+        return true;
+    }
     if (a % 2 == 0) {
         return false;
     }
@@ -188,4 +191,56 @@ long prime10001 (int lim) {
         test += 2;
     }
     return test;
+}
+
+long long largestProductSerie () {
+    string string1 = "7316717653133062491922511967442657474235534919493496983520312774506326239578318016984801869478851843858615607891129494954595017379583319528532088055111254069874715852386305071569329096329522744304355766896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866452387493035890729629049156044077239071381051585930796086670172427121883998797908792274921901699720888093776657273330010533678812202354218097512545405947522435258490771167055601360483958644670632441572215539753697817977846174064955149290862569321978468622482839722413756570560574902614079729686524145351004748216637048440319989000889524345065854122758866688116427171479924442928230863465674813919123162824586178664583591245665294765456828489128831426076900422421902267105562632111110937054421750694165896040807198403850962455444362981230987879927244284909188845801561660979191338754992005240636899125607176060588611646710940507754100225698315520005593572972571636269561882670428252483600823257530420752963450";
+    vector<short> vector1;
+    long long res = 0;
+    long long aux;
+    int i, j;
+    for (i = 0; i < string1.size(); i++) { //Converting a digit string into an integer array
+        vector1.push_back(string1.at(i) - '0');
+    }
+    for (i = 0; i < vector1.size() - 12; i++) {
+        aux = 1;
+        for (j = i; j <= i + 12; j++) {
+            if (vector1.at(j) == 0) {
+                i = j;
+                break;
+            }
+            aux *= vector1.at(j);
+        }
+        if (aux > res) {
+            res = aux;
+        }
+    }
+    return res;
+}
+
+long specialPythagoreanTriplet () { //a^2 + b^2 == c^2. a + b + c == 1000. Find abc.
+    long res = 0;
+    for (int i = 0; i < 997; i++) {
+        for (int j = i + 1; j < 998; j++) {
+            for (int k = j + 1; k < 999; k++) {
+                if (i + j + k == 1000) {
+                    if (i * i + j * j == k * k) {
+                        res = i * j * k;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    return res;
+}
+
+long long summationOfPrimes () {
+    long long res = 0;
+    for (int i = 1999999; i > 1; i--) {
+        if (isPrime(i)) {
+            res += i;
+        }
+    }
+    return res;
 }
