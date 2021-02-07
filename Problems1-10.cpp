@@ -218,7 +218,7 @@ long long largestProductSerie () {
     return res;
 }
 
-long specialPythagoreanTriplet () { //a^2 + b^2 == c^2. a + b + c == 1000. Find abc.
+long specialPythagoreanTriplet () { //a^2 + b^2 == c^2. a + b + c == 1000. Find abc. a < b < c
     long res = 0;
     for (int i = 0; i < 997; i++) {
         for (int j = i + 1; j < 998; j++) {
@@ -235,9 +235,10 @@ long specialPythagoreanTriplet () { //a^2 + b^2 == c^2. a + b + c == 1000. Find 
     return res;
 }
 
-long long summationOfPrimes () {
+long long summationOfPrimes () { //Problem 10
     long long res = 0;
-    for (int i = 1999999; i > 1; i--) {
+    res += 2;
+    for (int i = 3; i < 1999999; i += 2) {
         if (isPrime(i)) {
             res += i;
         }
