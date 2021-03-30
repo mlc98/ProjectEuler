@@ -37,7 +37,7 @@ long evenFib (int lim) { //Problem 2 Returns the sum of all even Fibonacci numbe
 
 
 int largestPrimeFactor (long long lim) { //Problem 3
-    int factor, max; // Variables to store the factor we're testing, and the maximum factor found
+    int factor, max; // Variables to store the factor we're testing, and the greatest factor found
     max = 1;
     factor = 2;
     while (factor == 2) { //We test out 2, to be able to increment by 2 (making odd numbers) in the next bucle
